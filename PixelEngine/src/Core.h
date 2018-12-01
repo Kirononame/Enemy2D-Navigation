@@ -6,6 +6,9 @@
 	#else
 		#define ENGINE_API _declspec(dllimport)
 	#endif
+
+#ifdef ENGINE_PLATFORM_UNIX
+
 #else
 	#error PLATFORM NOT SUPPORTED
 #endif 
