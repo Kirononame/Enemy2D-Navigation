@@ -1,5 +1,5 @@
 workspace "PixelEngine"
-	architecture "x86"
+	architecture "x64"
 
 	configurations
 	{
@@ -72,6 +72,17 @@ project "PathFinding"
 		"PixelEngine"
 	}
 
+	configuration "linux"
+		links
+		{	"X11",
+			"GL",
+			"pthread",
+			"png"
+		}
+
+	--configuration { "linux", "gmake" }
+		--buildoptions "-std=c++0x"
+
 	filter "system:windows"
 		
 		staticruntime "On"
@@ -87,6 +98,14 @@ project "PathFinding"
 		defines
 		{
 			"ENGINE_PLATFORM_UNIX"
+		}
+
+		links
+		{
+			"X11",
+			"GL",
+			"pthread",
+			"png"
 		}
 	
 	filter "configurations:Debug"
@@ -122,6 +141,17 @@ project "PlayerMovement"
 		"PixelEngine"
 	}
 
+	configuration "linux"
+		links
+		{	"X11",
+			"GL",
+			"pthread",
+			"png"
+		}
+
+	--configuration { "linux", "gmake" }
+		--buildoptions "-std=c++0x"
+
 	filter "system:windows"
 		
 		staticruntime "On"
@@ -137,6 +167,14 @@ project "PlayerMovement"
 		defines
 		{
 			"ENGINE_PLATFORM_UNIX"
+		}
+
+		links
+		{
+			"X11",
+			"GL",
+			"pthread",
+			"png"
 		}
 	
 	filter "configurations:Debug"
@@ -172,6 +210,17 @@ project "FollowPlayer"
 		"PixelEngine"
 	}
 
+	configuration "linux"
+		links
+		{	"X11",
+			"GL",
+			"pthread",
+			"png"
+		}
+
+	--configuration { "linux", "gmake" }
+		--buildoptions "-std=c++0x"
+
 	filter "system:windows"
 		
 		staticruntime "On"
@@ -187,6 +236,14 @@ project "FollowPlayer"
 		defines
 		{
 			"ENGINE_PLATFORM_UNIX"
+		}
+
+		links
+		{
+			"X11",
+			"GL",
+			"pthread",
+			"png"
 		}
 	
 	filter "configurations:Debug"
