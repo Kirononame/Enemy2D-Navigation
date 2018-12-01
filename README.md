@@ -73,7 +73,7 @@ Then open the project and run the application the main one is ***"FollowPlayer"*
 - [ ] Test Compile
 - [ ] Test running the project
 
-It should work on Code Blocks but yo are on your own to configure it as it wasn't tested a help on how to run the engine using code blocks from javidx9
+It should work on Code Blocks but you are on your own to configure it as it wasn't tested. A help on how to run the engine using code blocks from javidx9
 > Well I wont judge you, but make sure your Code::Blocks installation
 is really up to date - you may even consider updating your C++ toolchain
 to use MinGW32-W64, so google this. You will also need to enable C++14
