@@ -87,10 +87,12 @@ user32 gdi32 opengl32 gdiplus
 
 The minimum required version of gcc and g++ will be updated soon with the libraries that might be missing for some machines
 
+Make sure you have make installed
+
 To make the project files go to the root directory of the project then
 
 ```sh
-.\vendor\bin\linux\premake\premake5.exe gmake
+.\vendor\bin\linux\premake\premake5 gmake
 ```
 To Compile the project in debug mode
 
