@@ -40,7 +40,6 @@ float PathFinding::GetYFirst()
 void PathFinding::NextNode()
 {
 
-	std::cout << "here" << std::endl;
 
 	if (wayNodes.empty())
 	{

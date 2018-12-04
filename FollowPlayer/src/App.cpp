@@ -38,7 +38,6 @@ bool App::OnUserCreate()
 	player->OnUserCreate();
 	enemy->OnUserCreate();
 	path->OnUserCreate();
-	
 
 	return true;
 }

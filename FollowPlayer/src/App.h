@@ -9,6 +9,9 @@ class Player;
 class Enemy;
 class PathFinding;
 
+
+// Used as singelton pattern works as the main application and have a reference to all game objects in the game
+
 class App : public olc::PixelGameEngine
 {
 
@@ -16,7 +19,10 @@ private:
 	static App* _instance;
 	
 public:
+
 	App();
+
+	// GameObjects
 	Player* player;
 	Enemy* enemy;
 	PathFinding* path;

@@ -1,5 +1,8 @@
 #include "App.h"
 
+
+// The entry point for the app
+
 int main()
 {
 	App *app = App::getInstance();
