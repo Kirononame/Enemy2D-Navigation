@@ -9,6 +9,59 @@ PathFinding::PathFinding()
 	app = App::getInstance();
 }
 
+bool PathFinding::WayExist()
+{
+	if (way)
+		return true;
+
+	return false;
+}
+
+float PathFinding::GetX(sNode* s)
+{
+	return s->x*nNodeSize + nNodeBorder;
+}
+
+float PathFinding::GetY(sNode* s)
+{
+	return s->y*nNodeSize + nNodeBorder;
+}
+
+float PathFinding::GetXFirst()
+{
+	return way->x*nNodeSize + nNodeBorder;
+}
+
+float PathFinding::GetYFirst()
+{
+	return way->y*nNodeSize + nNodeBorder;
+}
+
+void PathFinding::NextNode()
+{
+
+	std::cout << "here" << std::endl;
+
+	if (wayNodes.empty())
+	{
+		way = NULL;
+		return;
+	}
+
+	way = wayNodes.back();
+	wayNodes.pop_back();
+
+	/*
+	way = wayNodes.at(nodeNumber);
+
+	if (nodeNumber >= maximumNodes)
+		nodeNumber = maximumNodes;
+	else
+		nodeNumber++;
+	*/
+}
+
+
 bool PathFinding::OnUserCreate()
 {
 
@@ -58,8 +111,8 @@ bool PathFinding::OnUserCreate()
 	// nodeEnd = &nodes[(nMapHeight / 2) * nMapWidth + nMapWidth - 2];
 
 	// Enemy position node
-	int px = (((int)round(app->enemy->GetX())) - nNodeBorder) / nNodeSize;
-	int py = (((int)round(app->enemy->GetY())) - nNodeBorder) / nNodeSize;
+	int px = (((int)round(app->enemy->GetX() + app->enemy->GetSize() / 2)) - nNodeBorder) / nNodeSize;
+	int py = (((int)round(app->enemy->GetY() + app->enemy->GetSize() / 2)) - nNodeBorder) / nNodeSize;
 
 	nodeStart = &nodes[py * nMapWidth + px];
 
@@ -76,6 +129,10 @@ bool PathFinding::OnUserCreate()
 
 bool PathFinding::Solve_AStar()
 {
+	nodeNumber = 0;
+	wayNodes.clear();
+	maximumNodes = 0;
+
 	// Reset Navigation Graph - default all node states
 	for (int x = 0; x < nMapWidth; x++)
 		for (int y = 0; y < nMapHeight; y++)
@@ -192,6 +249,15 @@ bool PathFinding::OnUserUpdate(float fElapsedTime)
 		nodeEnd = &nodes[yy * nMapWidth + xx];
 		Solve_AStar();
 	}
+
+	if (app->enemy->IsMoving())
+	{
+		// Enemy position node
+		int xx = (((int)round(app->enemy->GetX() + app->enemy->GetSize() / 2)) - nNodeBorder) / nNodeSize;
+		int yy = (((int)round(app->enemy->GetY() + app->enemy->GetSize() / 2)) - nNodeBorder) / nNodeSize;
+
+		nodeStart = &nodes[yy * nMapWidth + xx];
+	}
 	
 	// Reset Screen to black to draw on it
 	app->FillRect(0, 0, app->ScreenWidth(), app->ScreenHeight(), olc::BLACK);
@@ -222,7 +288,7 @@ bool PathFinding::OnUserUpdate(float fElapsedTime)
 			nodes[y * nMapWidth + x].bObstacle ? olc::WHITE : olc::BLUE);*/
 
 			if (nodes[y * nMapWidth + x].bVisited)
-				app->FillRect(x*nNodeSize + nNodeBorder, y*nNodeSize + nNodeBorder, nNodeDrawSize, nNodeDrawSize, olc::BLUE);
+				app->FillRect(x*nNodeSize + nNodeBorder, y*nNodeSize + nNodeBorder, nNodeDrawSize, nNodeDrawSize, olc::MAGENTA);
 			//DrawLine(x*nNodeSize + nNodeBorder, y*nNodeSize + nNodeBorder, (x + 1)*nNodeSize - nNodeBorder, (y + 1)*nNodeSize - nNodeBorder, olc::BLUE);
 
 			if (&nodes[y * nMapWidth + x] == nodeStart)
@@ -238,19 +304,35 @@ bool PathFinding::OnUserUpdate(float fElapsedTime)
 	#endif
 
 
-	// Draw Path by starting ath the end, and following the parent node trail
-	// back to the start - the start node will not have a parent path to follow
-	if (nodeEnd != nullptr)
+	if (wayNodes.empty())
 	{
-		sNode *p = nodeEnd;
-		while (p->parent != nullptr)
+		// Draw Path by starting ath the end, and following the parent node trail
+		// back to the start - the start node will not have a parent path to follow
+		if (nodeEnd != nullptr)
+		{
+			sNode *p = nodeEnd;
+			while (p->parent != nullptr)
+			{
+				maximumNodes++;
+
+				wayNodes.push_back(p);
+
+				app->DrawLine(p->x*nNodeSize + nNodeBorder + nNodeDrawSize / 2, p->y*nNodeSize + nNodeBorder + nNodeDrawSize / 2,
+					p->parent->x*nNodeSize + nNodeBorder + nNodeDrawSize / 2, p->parent->y*nNodeSize + nNodeBorder + nNodeDrawSize / 2, olc::YELLOW);
+
+				// Set next node to this node's parent
+				p = p->parent;
+			}
+		}
+
+	}
+
+	else
+	{
+		for each (sNode* p in wayNodes)
 		{
 			app->DrawLine(p->x*nNodeSize + nNodeBorder + nNodeDrawSize / 2, p->y*nNodeSize + nNodeBorder + nNodeDrawSize / 2,
-				p->parent->x*nNodeSize + nNodeBorder + nNodeDrawSize / 2, p->parent->y*nNodeSize + nNodeBorder + nNodeDrawSize/2, olc::YELLOW);
-
-			way = p;
-			// Set next node to this node's parent
-			p = p->parent;
+				p->parent->x*nNodeSize + nNodeBorder + nNodeDrawSize / 2, p->parent->y*nNodeSize + nNodeBorder + nNodeDrawSize / 2, olc::YELLOW);
 		}
 	}
 

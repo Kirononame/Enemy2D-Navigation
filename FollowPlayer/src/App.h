@@ -14,7 +14,7 @@ class App : public olc::PixelGameEngine
 
 private:
 	static App* _instance;
-
+	
 public:
 	App();
 	Player* player;

@@ -13,7 +13,7 @@ public:
 	PathFinding();
 	App* app;
 
-private:
+public:
 
 	struct sNode
 	{
@@ -39,11 +39,25 @@ private:
 	sNode *nodeStart = nullptr;
 	sNode *nodeEnd = nullptr;
 
-	sNode *way;
+	std::vector<sNode*> wayNodes;
+	sNode *way = NULL;
+
+	int nodeNumber = 0;
+
+	int maximumNodes = 0;
 
 
 public:
 	bool OnUserCreate();
+
+	float GetX(sNode* s);
+	float GetY(sNode* s);
+
+	float GetXFirst();
+	float GetYFirst();
+
+	void NextNode();
+	bool WayExist();
 
 	bool Solve_AStar();
 

@@ -253,5 +253,3 @@ project "FollowPlayer"
 	filter "configurations:Release"
 		defines "RELEASE"
 		optimize "On"
-
-

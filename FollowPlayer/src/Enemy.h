@@ -29,6 +29,8 @@ public:
 	float GetX();
 	float GetY();
 
+	int GetSize();
+
 	bool IsMoving();
 
 	bool OnUserCreate();
