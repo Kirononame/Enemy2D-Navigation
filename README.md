@@ -16,7 +16,7 @@ The player's goal to move from one point to another point and the enemy's goal t
 - [x] Move the player
 - Find a path to the player
 	- [x] AStar
-- [ ] Move the enemy on the path
+- [x] Move the enemy on the path
 - Add Physics
 	- [ ] Collisions
 - Limit the area that the Enemy can see
