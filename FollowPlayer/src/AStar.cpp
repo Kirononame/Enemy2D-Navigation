@@ -64,15 +64,13 @@ void PathFinding::NextNode()
 bool PathFinding::OnUserCreate()
 {
 
-	std::cout << "Path Finding: " << std::endl;
+	std::cout << "\nPath Finding Initiating: " << std::endl;
 
 	std::cout << "Enemy Movment Performance hit fix" << std::endl;
 
 	std::cout << "AStar Frame Calculations performance hit fix" << std::endl;
 
 	std::cout << "Set fixed time for astar frame calculations" << std::endl;
-
-	std::cout << "Path Initiating: " << std::endl;
 
 	// Create a 2D array of nodes - this is for convenience of rendering and construction
 	// and is not required for the algorithm to work - the nodes could be placed anywhere
