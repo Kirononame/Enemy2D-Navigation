@@ -29,7 +29,7 @@ bool App::OnUserCreate()
 {
 	std::cout << "This engine isn't mine please refer to this link for the license or any other questions about the engine" << std::endl;
 	std::cout << "https://github.com/OneLoneCoder/olcPixelGameEngine/blob/master/olcPixelGameEngine.h" << std::endl;
-	std::cout << "App Started" << std::endl;
+	std::cout << "App Starting: " << std::endl;
 
 	path = new PathFinding();
 	player = new Player();
@@ -38,6 +38,8 @@ bool App::OnUserCreate()
 	player->OnUserCreate();
 	enemy->OnUserCreate();
 	path->OnUserCreate();
+
+	std::cout << "App Started" << std::endl;
 
 	return true;
 }

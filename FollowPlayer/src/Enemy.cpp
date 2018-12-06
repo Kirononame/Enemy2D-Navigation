@@ -96,7 +96,7 @@ bool Enemy::IsMoving()
 
 bool Enemy::OnUserCreate()
 {
-	std::cout << "Player Initaited" << std::endl;
+	std::cout << "Player Initaiting: " << std::endl;
 
 	x = (float)(app->ScreenWidth() / 4);
 	y = (float)(app->ScreenHeight() / 4);
@@ -104,6 +104,8 @@ bool Enemy::OnUserCreate()
 	size = 8;
 
 	speed = 20;
+
+	std::cout << "Player Initaited" << std::endl;
 
 	return true;
 }

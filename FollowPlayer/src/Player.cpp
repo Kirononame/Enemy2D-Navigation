@@ -79,7 +79,7 @@ bool Player::IsMoving()
 
 bool Player::OnUserCreate()
 {
-	std::cout << "Player Initaited" << std::endl;
+	std::cout << "Player Initaiting: " << std::endl;
 
 	x = (float)(app->ScreenWidth() / 2);
 	y = (float)(app->ScreenHeight() / 2);
@@ -87,6 +87,8 @@ bool Player::OnUserCreate()
 	size = 8;
 
 	speed = 100;
+
+	std::cout << "Player Initaited " << std::endl;
 
 	return true;
 }
