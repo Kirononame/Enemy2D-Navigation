@@ -22,6 +22,17 @@ float Enemy::GetY()
 	return y;
 }
 
+void Enemy::SetX(float num)
+{
+	x = num;
+}
+
+void Enemy::SetY(float num)
+{
+	y = num;
+}
+
+
 int Enemy::GetSize()
 {
 	return size;
@@ -36,9 +47,11 @@ void Enemy::Move(float fElapsedTime)
 {
 	if (ssMoving)
 	{
+		bool next = true;
 
 		if (!app->path->WayExist())
 		{
+			
 			app->path->NextNode();
 			return;
 		}
@@ -53,8 +66,10 @@ void Enemy::Move(float fElapsedTime)
 		{
 			moving = true;
 			x += speed * fElapsedTime;
-			if (x >= app->ScreenWidth() - size)
-				x = (float)(app->ScreenWidth() - size);
+			//if (x >= app->ScreenWidth() - size)
+				//x = (float)(app->ScreenWidth() - size);
+
+			next = false;
 		}
 
 		// left >
@@ -62,8 +77,10 @@ void Enemy::Move(float fElapsedTime)
 		{
 			moving = true;
 			x -= speed * fElapsedTime;
-			if (x <= 0)
-				x = 0;
+			//if (x <= 0)
+				//x = 0;
+
+			next = false;
 		}
 
 		// down <
@@ -71,8 +88,10 @@ void Enemy::Move(float fElapsedTime)
 		{
 			moving = true;
 			y += speed * fElapsedTime;
-			if (y >= app->ScreenHeight() - size)
-				y = (float)(app->ScreenHeight() - size);
+			//if (y >= app->ScreenHeight() - size)
+				//y = (float)(app->ScreenHeight() - size);
+
+			next = false;
 		}
 
 		// up >
@@ -80,11 +99,13 @@ void Enemy::Move(float fElapsedTime)
 		{
 			moving = true;
 			y -= speed * fElapsedTime;
-			if (y <= 0)
-				y = 0;
+			//if (y <= 0)
+				//y = 0;
+
+			next = false;
 		}
 
-		else
+		if(next)
 		{
 			app->path->NextNode();
 		}
@@ -100,7 +121,7 @@ bool Enemy::IsMoving()
 
 bool Enemy::OnUserCreate()
 {
-	std::cout << "\nEnemy Initaiting: " << std::endl;
+	std::cout << "\n    Enemy Initaiting: " << std::endl;
 
 	x = (float)(app->ScreenWidth() / 4);
 	y = (float)(app->ScreenHeight() / 4);
@@ -109,7 +130,7 @@ bool Enemy::OnUserCreate()
 
 	speed = 20;
 
-	std::cout << "Enemy Initaited" << std::endl;
+	std::cout << "        Enemy Initaited" << std::endl;
 
 	return true;
 }
@@ -136,7 +157,7 @@ bool Enemy::OnUserUpdate(float fElapsedTime)
 		//void DrawString(int32_t x, int32_t y, std::string sText,
 		//Pixel col = olc::WHITE, uint32_t scale = 1);
 
-		app->DrawString(5, 5, "Moving",
+		app->DrawString(5, 3, "Moving",
 			olc::WHITE, 1);
 	}
 
@@ -145,12 +166,12 @@ bool Enemy::OnUserUpdate(float fElapsedTime)
 		//void DrawString(int32_t x, int32_t y, std::string sText,
 		//Pixel col = olc::WHITE, uint32_t scale = 1);
 
-		app->DrawString(5, 5, "Standing",
+		app->DrawString(5, 3, "Standing",
 			olc::WHITE, 1);
 	}
 
 	std::string s = std::to_string(speed);
-	app->DrawString(100, 5, s,
+	app->DrawString(100, 3, s,
 		olc::WHITE, 1);
 		
 

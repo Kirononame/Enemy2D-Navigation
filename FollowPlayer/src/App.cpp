@@ -39,7 +39,7 @@ bool App::OnUserCreate()
 	enemy->OnUserCreate();
 	path->OnUserCreate();
 
-	std::cout << "\nApp Started" << std::endl;
+	std::cout << "\n    App Started" << std::endl;
 
 	return true;
 }

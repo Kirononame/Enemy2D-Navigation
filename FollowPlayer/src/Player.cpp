@@ -19,6 +19,17 @@ float Player::GetY()
 	return y;
 }
 
+void Player::SetX(float num)
+{
+	x = num;
+}
+
+void Player::SetY(float num)
+{
+	y = num;
+}
+
+
 int Player::GetSize()
 {
 	return size;
@@ -78,7 +89,7 @@ bool Player::IsMoving()
 
 bool Player::OnUserCreate()
 {
-	std::cout << "\nPlayer Initaiting: " << std::endl;
+	std::cout << "\n    Player Initaiting: " << std::endl;
 
 	x = (float)(app->ScreenWidth() / 2);
 	y = (float)(app->ScreenHeight() / 2);
@@ -87,7 +98,7 @@ bool Player::OnUserCreate()
 
 	speed = 100;
 
-	std::cout << "Player Initaited " << std::endl;
+	std::cout << "        Player Initaited " << std::endl;
 
 	return true;
 }

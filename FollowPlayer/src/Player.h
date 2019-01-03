@@ -28,6 +28,9 @@ public:
 	float GetX();
 	float GetY();
 
+	void SetX(float num);
+	void SetY(float num);
+
 	int GetSize();
 
 	bool IsMoving();

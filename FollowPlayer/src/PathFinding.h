@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <algorithm>
+#include <string.h>
 
 #include "App.h"
 
@@ -28,8 +29,8 @@ public:
 	};
 
 	sNode *nodes = nullptr;
-	int nMapWidth = 16;
-	int nMapHeight = 16;
+	int nMapWidth = 15;
+	int nMapHeight = 15;
 
 	int nNodeSize = 8;
 	int nNodeBorder = 3;
@@ -49,6 +50,17 @@ public:
 	bool astarAlgo = true;
 	bool dfsAlgo = false;
 	bool bfsAlgo = false;
+	bool bfsLocalAlgo = false;
+	bool dfsLocalAlgo = false;
+
+	bool vert = false;
+
+	bool enemyMoveCalculate = false;
+
+	bool calculated = false;
+	bool wayCalculated = false;
+
+	std::string s;
 
 
 public:
@@ -66,6 +78,10 @@ public:
 	bool Solve_AStar();
 	bool Solve_DFS();
 	bool Solve_BFS();
+	bool Solve_DFSLocal();
+	bool Solve_BFSLocal();
+
+	void CreateConnections();
 
 	bool OnUserUpdate(float fElapsedTime);
 
