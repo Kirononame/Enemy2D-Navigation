@@ -4,7 +4,7 @@
 
 ## [Engine](https://github.com/OneLoneCoder/olcPixelGameEngine)
 
-The engine used belongs to javidx9 please refer to the engine's github page for info about the license and the engine.
+The engine used belongs to javidx9 please **refer** to the engine's github page for info about the license and the engine.
 
 
 ## Objective
@@ -15,14 +15,39 @@ The player's goal to move from one point to another point and the enemy's goal t
 
 - [x] Move the player
 - Find a path to the player
-	- [x] AStar
+  - [x] AStar
 - [x] Move the enemy on the path
 - Add Physics
-	- [ ] Collisions
+  - [ ] Collisions
 - Limit the area that the Enemy can see
-	- [ ] Raycasting - ShadowCasting [Site1](https://www.redblobgames.com/articles/visibility/) - [Site2](https://ncase.me/sight-and-light/) 
+  - [ ] Raycasting - ShadowCasting [Site1](https://www.redblobgames.com/articles/visibility/) - [Site2](https://ncase.me/sight-and-light/) 
 - [ ] Make a level
 - [ ] Make the player Learn how to play the level
+
+## Algorithms
+
+- [x] DFS
+- [x] DFS Improved
+- [x] BFS
+- [x] BFS Improved
+- [x] AStar
+
+## Controls
+
+* <kbd>Up</kbd> - <kbd>Down</kbd> - <kbd>Right</kbd> - <kbd>Right</kbd> : Move Player
+* <kbd>q</kbd> - <kbd>w</kbd> : Change Enemy Speed
+* <kbd>n</kbd> : Revert game to normal mode
+* <kbd>r</kbd> - <kbd>t</kbd> : Change World Size will also need to revert to normal mode after using it for performance
+* <kbd>m</kbd> : Move or Stop Player
+* <kbd>v</kbd> : To connect nodes Diagonally
+* <kbd>a</kbd> : Use a star algorithm
+* <kbd>d</kbd> : Use DFS algorithm
+* <kbd>Shift</kbd> + <kbd>d</kbd> : Use DFS Improved algorithm
+* <kbd>b</kbd> : Use BFS algorithm
+* <kbd>Shift</kbd> + <kbd>b</kbd> : Use BFS Improved algorithm
+* Left Mouse Click : Make a wall at a specified node
+* <kbd>Shift</kbd> + Left Mouse Click : Move Enemy to a specified node
+* <kbd>Ctrl</kbd> + Left Mouse Click : Move Player to a specified node
 
 
 ## Project Modes
