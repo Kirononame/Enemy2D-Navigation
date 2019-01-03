@@ -1,5 +1,6 @@
 #include <iostream>
 #include <math.h>
+#include <string.h>
 
 #include "App.h"
 #include "Enemy.h"
@@ -33,59 +34,62 @@ void Enemy::Render()
 
 void Enemy::Move(float fElapsedTime)
 {
-
-	if (!app->path->WayExist())
+	if (ssMoving)
 	{
-		app->path->NextNode();
-		return;
-	}
 
-	float xDest = app->path->GetXFirst();
-	float yDest = app->path->GetYFirst();
+		if (!app->path->WayExist())
+		{
+			app->path->NextNode();
+			return;
+		}
 
-	// std::cout << abs(x - xDest) << abs(y - yDest);
-	
-	//right <
-	if ((x - xDest) < -EEPSILON)
-	{
-		moving = true;
-		x += speed * fElapsedTime;
-		if (x >= app->ScreenWidth() - size)
-			x = (float)(app->ScreenWidth() - size);
-	}
+		float xDest = app->path->GetXFirst();
+		float yDest = app->path->GetYFirst();
 
-	// left >
-	if ((x - xDest) > EEPSILON)
-	{
-		moving = true;
-		x -= speed * fElapsedTime;
-		if (x <= 0)
-			x = 0;
-	}
+		// std::cout << abs(x - xDest) << abs(y - yDest);
 
-	// down <
-	if ((y - yDest) < -EEPSILON)
-	{
-		moving = true;
-		y += speed * fElapsedTime;
-		if (y >= app->ScreenHeight() - size)
-			y = (float)(app->ScreenHeight() - size);
-	}
+		//right <
+		if ((x - xDest) < -EEPSILON)
+		{
+			moving = true;
+			x += speed * fElapsedTime;
+			if (x >= app->ScreenWidth() - size)
+				x = (float)(app->ScreenWidth() - size);
+		}
 
-	// up >
-	if ((y - yDest) > EEPSILON)
-	{
-		moving = true;
-		y -= speed * fElapsedTime;
-		if (y <= 0)
-			y = 0;
-	}
+		// left >
+		if ((x - xDest) > EEPSILON)
+		{
+			moving = true;
+			x -= speed * fElapsedTime;
+			if (x <= 0)
+				x = 0;
+		}
 
-	else
-	{
-		app->path->NextNode();
+		// down <
+		if ((y - yDest) < -EEPSILON)
+		{
+			moving = true;
+			y += speed * fElapsedTime;
+			if (y >= app->ScreenHeight() - size)
+				y = (float)(app->ScreenHeight() - size);
+		}
+
+		// up >
+		if ((y - yDest) > EEPSILON)
+		{
+			moving = true;
+			y -= speed * fElapsedTime;
+			if (y <= 0)
+				y = 0;
+		}
+
+		else
+		{
+			app->path->NextNode();
+		}
+
 	}
-	
 
 }
 
@@ -112,6 +116,44 @@ bool Enemy::OnUserCreate()
 
 bool Enemy::OnUserUpdate(float fElapsedTime)
 {
+	if (app->GetKey(olc::M).bPressed)
+		ssMoving = !ssMoving;
+	else if (app->GetKey(olc::Q).bPressed)
+	{
+		speed -= 5;
+		if (speed <= 0)
+			speed = 0;
+	}
+	else if (app->GetKey(olc::W).bPressed)
+	{
+		speed += 5;
+		if (speed >= 100)
+			speed = 100;
+	}
+
+	if (ssMoving)
+	{
+		//void DrawString(int32_t x, int32_t y, std::string sText,
+		//Pixel col = olc::WHITE, uint32_t scale = 1);
+
+		app->DrawString(5, 5, "Moving",
+			olc::WHITE, 1);
+	}
+
+	else
+	{
+		//void DrawString(int32_t x, int32_t y, std::string sText,
+		//Pixel col = olc::WHITE, uint32_t scale = 1);
+
+		app->DrawString(5, 5, "Standing",
+			olc::WHITE, 1);
+	}
+
+	std::string s = std::to_string(speed);
+	app->DrawString(100, 5, s,
+		olc::WHITE, 1);
+		
+
 	moving = false;
 	Move(fElapsedTime);
 	Render();

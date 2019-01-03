@@ -46,6 +46,10 @@ public:
 
 	int maximumNodes = 0;
 
+	bool astarAlgo = true;
+	bool dfsAlgo = false;
+	bool bfsAlgo = false;
+
 
 public:
 	bool OnUserCreate();
@@ -60,6 +64,8 @@ public:
 	bool WayExist();
 
 	bool Solve_AStar();
+	bool Solve_DFS();
+	bool Solve_BFS();
 
 	bool OnUserUpdate(float fElapsedTime);
 

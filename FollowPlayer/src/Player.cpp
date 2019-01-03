@@ -4,7 +4,6 @@
 #include "Player.h"
 
 
-
 Player::Player()
 {
 	app = App::getInstance();

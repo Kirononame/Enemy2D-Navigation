@@ -2,7 +2,7 @@
 
 #include "Engine.h"
 #include "Player.h"
-#include "AStar.h"
+#include "PathFinding.h"
 #include "Enemy.h"
 
 class Player;

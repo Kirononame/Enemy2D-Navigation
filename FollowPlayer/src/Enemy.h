@@ -18,6 +18,8 @@ private:
 
 	bool moving = false;
 
+	bool ssMoving = false;
+
 public:
 	Enemy();
 	App* app;
