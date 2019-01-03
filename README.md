@@ -34,13 +34,13 @@ The player's goal to move from one point to another point and the enemy's goal t
 
 ## Controls
 
-* <kbd>Up</kbd> - <kbd>Down</kbd> - <kbd>Right</kbd> - <kbd>Right</kbd> : Move Player
+* <kbd>Up</kbd> - <kbd>Down</kbd> - <kbd>Right</kbd> - <kbd>Left</kbd> : Move Player
 * <kbd>q</kbd> - <kbd>w</kbd> : Change Enemy Speed
 * <kbd>n</kbd> : Revert game to normal mode
 * <kbd>r</kbd> - <kbd>t</kbd> : Change World Size will also need to revert to normal mode after using it for performance
 * <kbd>m</kbd> : Move or Stop Player
 * <kbd>v</kbd> : To connect nodes Diagonally
-* <kbd>a</kbd> : Use a star algorithm
+* <kbd>a</kbd> : Use A star algorithm
 * <kbd>d</kbd> : Use DFS algorithm
 * <kbd>Shift</kbd> + <kbd>d</kbd> : Use DFS Improved algorithm
 * <kbd>b</kbd> : Use BFS algorithm
