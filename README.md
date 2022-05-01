@@ -20,16 +20,12 @@ The player's goal to move from one point to another point and the enemy's goal t
 - Add Physics
   - [ ] Collisions
 - Limit the area that the Enemy can see
-  - [ ] Raycasting - ShadowCasting [Site1](https://www.redblobgames.com/articles/visibility/) - [Site2](https://ncase.me/sight-and-light/) 
-- [ ] Make a level
-- [ ] Make the player Learn how to play the level
+  - [ ] Raycasting - ShadowCasting [Site1](https://www.redblobgames.com/articles/visibility/) - [Site2](https://ncase.me/sight-and-light/)
 
 ## Algorithms
 
 - [x] DFS
-- [x] DFS Improved
 - [x] BFS
-- [x] BFS Improved
 - [x] AStar
 
 ## Controls
@@ -64,13 +60,10 @@ Will disable the visual representation
 
 ### Architecture support
 - [x] x64
-- [ ] x86 (only tested with Visual Studio but it should work with other project tools if the correct libraries are provided, you will need to edit the configuration of the premake file)
 
 ### Platform support
 - [x] Windows
-- [ ] Linux (Running the app wasn't tested)
-
-Running the project on any other platforms will probably cause an error
+- [ ] Linux (It should work but not tested)
 
 ### [Premake](https://github.com/premake/premake-core)
 
@@ -87,23 +80,11 @@ Premake is a command line utility which reads a scripted definition of a softwar
 - [x] Test Compile
 - [x] Test running the project
 
-Use premake to generate visual studio 2017 files by running the script provided **GenerateProjectForVS17.bat**
+Use premake to generate visual studio 2022 files by running the script provided **GenerateProjectForVS22.bat**
 
-To change the version to 2015 or 2013 just change the version in the Script file.
 
 Then open the project and run the application the main one is ***"FollowPlayer"***
 
-#### Run using Code blocks
-
-- [ ] Test Compile
-- [ ] Test running the project
-
-It should work on Code Blocks but you are on your own to configure it as it wasn't tested. A help on how to run the engine using code blocks from javidx9
-> Well I wont judge you, but make sure your Code::Blocks installation
-is really up to date - you may even consider updating your C++ toolchain
-to use MinGW32-W64, so google this. You will also need to enable C++14
-in your build options, and add to your linker the following libraries:
-user32 gdi32 opengl32 gdiplus
 
 ### Run on Linux
 
@@ -112,7 +93,7 @@ user32 gdi32 opengl32 gdiplus
 
 The minimum required version of gcc and g++ will be updated soon with the libraries that might be missing for some machines
 
-Make sure you have make installed
+Make sure you have **make** installed
 
 To make the project files go to the root directory of the project then
 
